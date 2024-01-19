@@ -34,13 +34,13 @@ function clear() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawBat(x, y) {
-    ctx.fillStyle = 'white';
+function drawBat(x, y, color = 'white') {
+    ctx.fillStyle = color;
     ctx.fillRect(x, y, 10, 30);
 }
 
 function drawBall(x, y) {
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'blue';
     ctx.fillRect(x, y, 5, 5);
 }
 
@@ -73,12 +73,21 @@ function checkCollision() {
     }
 }
 
+function drawScore(player1Score, player2Score) {
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    ctx.fillText(player1Score, 100, 30);
+    ctx.fillText(player2Score, 200, 30);
+}
+
 function render() {
     clear();
     drawBat(player1.x, player1.y);
-    drawBat(player2.x, player2.y);
+    drawBat(player2.x, player2.y, 'yellow');
     drawBall(ball.x, ball.y);
+    drawScore(player1.score, player2.score);
 }
+
 
 setup();
 
